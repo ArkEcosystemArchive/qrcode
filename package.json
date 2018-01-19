@@ -1,6 +1,6 @@
 {
   "name": "ark-qrcode",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A web component to generate QR codes for ARK payments.",
   "main": "dist/arkqrcode.js",
   "types": "dist/types/index.d.ts",
