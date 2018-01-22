@@ -8,18 +8,15 @@ A web component to generate QR codes for ARK payments.
 
 ### Script tag
 
-- Put this script tag `<script src='https://unpkg.com/ark-qrcode@latest/dist/ark-qrcode.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
+- Put this script tag `<script src='https://unpkg.com/ark-qrcode@latest/dist/arkqrcode.js'></script>` in the head of your index.html
 
 ### Node Modules
 - Run `npm install ark-qrcode --save`
-- Put this script tag `<script src='node_modules/ark-qrcode/dist/mycomponent.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
+- Put this script tag `<script src='node_modules/ark-qrcode/dist/arkqrcode.js'></script>` in the head of your index.html
 
 ### In a stencil-starter app
 - Run `npm install ark-qrcode --save`
 - Add `{ name: 'ark-qrcode' }` to your `collections`.
-- Then you can use the element anywhere in your template, JSX, html etc
 
 ## Usage
 
@@ -43,7 +40,7 @@ Insert the element in your code and enter your custom properties:
 
 Generate this QR code:
 
-<img src="https://i.imgur.com/VEGA4gO.png" width="12%">
+<img src="https://i.imgur.com/VEGA4gO.png" width="15%">
 
 ## Properties
 
