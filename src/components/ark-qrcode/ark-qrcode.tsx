@@ -64,6 +64,36 @@ export class ArkQRCode {
     return canvas.toDataURL(mime);
   }
 
+  @Method()
+  deserializeURI(uri: string) {
+    let validate = this.validateURI(uri);
+
+    if (!validate) return;
+
+    const queryString = {};
+    const regex = new RegExp('([^?=&]+)(=([^&]*))?', 'g');
+    validate[2].replace(regex, ($0, $1, $2, $3) => queryString[$1] = $3)
+
+    const scheme = { address: null, amount: null, label: null, vendorField: null };
+
+    for (let prop in scheme) {
+      scheme[prop] = queryString[prop];
+    }
+
+    scheme.address = validate[1]
+    scheme.amount = scheme.amount ? Number(scheme.amount) : null
+    scheme.label = scheme.label ? decodeURI(scheme.label) : null
+    scheme.vendorField = scheme.vendorField ? decodeURI(scheme.vendorField) : null
+
+    return scheme;
+  }
+
+  validateURI(uri: string) {
+    const regex = new RegExp(/^(?:ark:)([AaDd]{1}[0-9a-zA-Z]{33})([-a-zA-Z0-9+&@#\/%=~_|$?!:,.]*)$/);
+
+    if (regex.test(uri)) return uri.match(regex)
+  }
+
   generateSchema(): string {
     const params = this.formatParams();
     const uri = `ark:${this.address}${params}`;

@@ -77,6 +77,16 @@ document.querySelector('ark-qrcode').getDataURL();
 // => data:image/png;base64,iVBORw0KGgoAAAANSUhE...n6ofvMC4I9AAAAAElFTkSuQmCC
 ```
 
+### `deserializeURI(uri)`
+
+Deserialize the URI scheme to a JSON object.
+
+```javascript
+const uri = 'ark:DE6os4N86ef9bba6kVGurqxmhpBHKctoxY?amount=10.5&vendorField=Hello%20Ark!';
+document.querySelector('ark-qrcode').deserializeURI(uri);
+// => { address: 'DE6os4N86ef9bba6kVGurqxmhpBHKctoxY', amount: 10.5, label: null, vendorField: 'Hello Ark!' }
+```
+
 ## Authors
 
 - Lúcio Rubens <lucio@ark.io>
