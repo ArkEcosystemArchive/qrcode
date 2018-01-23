@@ -91,7 +91,7 @@ export class ArkQRCode {
   validateURI(uri: string) {
     const regex = new RegExp(/^(?:ark:)([AaDd]{1}[0-9a-zA-Z]{33})([-a-zA-Z0-9+&@#\/%=~_|$?!:,.]*)$/);
 
-    if (regex.test(uri)) return uri.match(regex)
+    if (regex.test(uri)) return regex.exec(uri)
   }
 
   generateSchema(): string {
