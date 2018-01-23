@@ -1,6 +1,6 @@
 {
   "name": "ark-qrcode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A web component to generate QR codes for ARK payments.",
   "main": "dist/arkqrcode.js",
   "types": "dist/types/index.d.ts",
@@ -18,14 +18,14 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@stencil/core": "^0.1.5",
+    "@stencil/core": "^0.2.0",
     "qrious": "^4.0.2"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
     "@stencil/utils": "latest",
-    "@types/jest": "^21.1.1",
-    "jest": "^21.2.1"
+    "@types/jest": "^22.0.1",
+    "jest": "^22.1.4"
   },
   "repository": {
     "type": "git",
