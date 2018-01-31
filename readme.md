@@ -89,6 +89,16 @@ document.querySelector('ark-qrcode').deserializeURI(uri);
 // => { address: 'DE6os4N86ef9bba6kVGurqxmhpBHKctoxY', amount: 10.5, label: null, vendorField: 'Hello Ark!' }
 ```
 
+### `fromObject(obj)`
+
+Instantiate a URI from an Object.
+
+```javascript
+const obj = { address: DE6os4N86ef9bba6kVGurqxmhpBHKctoxY, amount: 10.5 };
+const element = document.querySelector('ark-qrcode').fromObject(obj);
+// => <ark-qrcode address="DE6os4N86ef9bba6kVGurqxmhpBHKctoxY" amount="10.5">
+```
+
 ## Authors
 
 - Lúcio Rubens <lucio@ark.io>
