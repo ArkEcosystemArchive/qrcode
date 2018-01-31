@@ -9,43 +9,43 @@ import QRious from 'qrious';
 export class ArkQRCode {
   @Element() element: Element;
 
-  @Prop() address: string;
-  @Prop() amount: number;
-  @Prop() label: string;
-  @Prop() vendorField: string;
-  @Prop() size: number = 100;
-  @Prop() showLogo: boolean = false;
+  @Prop({ mutable: true }) address: string;
+  @Prop({ mutable: true }) amount: number;
+  @Prop({ mutable: true }) label: string;
+  @Prop({ mutable: true }) vendorField: string;
+  @Prop({ mutable: true }) size: number = 100;
+  @Prop({ mutable: true }) showLogo: boolean = false;
 
   @State() isLoad: boolean;
 
   @Watch('address')
-  validateAddress (oldValue: string, newValue: string) {
+  validateAddress () {
     const pattern = /^[AaDd]{1}[0-9a-zA-Z]{33}$/g;
 
-    if (!newValue) throw new Error('address: required');
-    if (newValue && !newValue.match(pattern)) throw new Error('address: not valid ark recipient');
+    if (!this.address) throw new Error('address: required');
+    if (this.address && !this.address.match(pattern)) throw new Error('address: not valid ark recipient');
   }
 
   @Watch('amount')
-  validateAmount (oldValue: number, newValue: number) {
-    if (typeof Number(newValue) !== 'number') throw new Error('amount: invalid amount');
+  validateAmount () {
+    if (typeof Number(this.amount) !== 'number') throw new Error('amount: invalid amount');
   }
 
   @Watch('vendorField')
-  validateVendorField (oldValue: string, newValue: string) {
-    if (typeof newValue == 'string' && decodeURIComponent(newValue) == newValue) throw new Error('vendorField: must be a UTF-8 encoded string');
-    if (decodeURIComponent(newValue).length > 64) throw new Error('vendorField: enter no more than 64 characters');
+  validateVendorField () {
+    if (typeof this.vendorField == 'string' && decodeURIComponent(this.vendorField) == this.vendorField) throw new Error('vendorField: must be a UTF-8 encoded string');
+    if (decodeURIComponent(this.vendorField).length > 64) throw new Error('vendorField: enter no more than 64 characters');
   }
 
   @Watch('size')
-  validateSize (oldValue: number, newValue: number) {
-    if (typeof newValue !== 'number') throw new Error('size: must be a number');
+  validateSize () {
+    if (typeof this.size !== 'number') throw new Error('size: must be a number');
   }
 
   @Watch('showLogo')
-  validateShowLogo (oldValue: boolean, newValue: boolean) {
-    if (typeof newValue !== 'boolean') throw new Error('show-logo: must be a boolean');
-    if (newValue && this.size < 150) throw new Error('show-logo: to display the logo the size must be greater than 150');
+  validateShowLogo () {
+    if (typeof this.showLogo !== 'boolean') throw new Error('show-logo: must be a boolean');
+    if (this.showLogo && this.size < 150) throw new Error('show-logo: to display the logo the size must be greater than 150');
   }
 
   @Method()
@@ -92,6 +92,20 @@ export class ArkQRCode {
     const regex = new RegExp(/^(?:ark:)([AaDd]{1}[0-9a-zA-Z]{33})([-a-zA-Z0-9+&@#\/%=~_|$?!:,.]*)$/);
 
     if (regex.test(uri)) return regex.exec(uri)
+  }
+
+  @Method()
+  fromObject(data: any): Element {
+    this.address = data['address'];
+    this.amount = data['amount'];
+    this.label = data['label'];
+    this.vendorField = data['vendorField'];
+    this.size = data['size'];
+    this.showLogo = data['showLogo'];
+    
+    this.isLoad = true;
+
+    return this.element;
   }
 
   generateSchema(): string {
@@ -160,11 +174,11 @@ export class ArkQRCode {
 
   componentDidLoad() {
     if (this.amount || this.vendorField || this.label || this.address) {
-      this.validateAddress(null, this.address);
-      this.validateAmount(null, this.amount);
-      this.validateVendorField(null, this.vendorField);
-      this.validateSize(null, this.size);
-      this.validateShowLogo(null, this.showLogo);
+      this.validateAddress();
+      this.validateAmount();
+      this.validateVendorField();
+      this.validateSize();
+      this.validateShowLogo();
   
       this.isLoad = true;
     }
