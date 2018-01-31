@@ -79,6 +79,16 @@ document.querySelector('ark-qrcode').getDataURL();
 // => data:image/png;base64,iVBORw0KGgoAAAANSUhE...n6ofvMC4I9AAAAAElFTkSuQmCC
 ```
 
+### `validateURI(uri)`
+
+Validate an URI string.
+
+```javascript
+const uri = 'ark:DE6os4N86ef9bba6kVGurqxmhpBHKctoxY?amount=10.5';
+document.querySelector('ark-qrcode').validateURI(uri);
+// => ["ark:DE6os4N86ef9bba6kVGurqxmhpBHKctoxY?amount=10.5", "DE6os4N86ef9bba6kVGurqxmhpBHKctoxY", "?amount=10.5"]
+```
+
 ### `deserializeURI(uri)`
 
 Deserialize the URI scheme to a JSON object.

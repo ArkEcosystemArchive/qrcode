@@ -88,6 +88,7 @@ export class ArkQRCode {
     return scheme;
   }
 
+  @Method()
   validateURI(uri: string) {
     const regex = new RegExp(/^(?:ark:)([AaDd]{1}[0-9a-zA-Z]{33})([-a-zA-Z0-9+&@#\/%=~_|$?!:,.]*)$/);
 
