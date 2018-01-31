@@ -159,13 +159,15 @@ export class ArkQRCode {
   }
 
   componentDidLoad() {
-    this.validateAddress(null, this.address);
-    this.validateAmount(null, this.amount);
-    this.validateVendorField(null, this.vendorField);
-    this.validateSize(null, this.size);
-    this.validateShowLogo(null, this.showLogo);
-
-    this.isLoad = true;
+    if (this.amount || this.vendorField || this.label || this.address) {
+      this.validateAddress(null, this.address);
+      this.validateAmount(null, this.amount);
+      this.validateVendorField(null, this.vendorField);
+      this.validateSize(null, this.size);
+      this.validateShowLogo(null, this.showLogo);
+  
+      this.isLoad = true;
+    }
   }
 
   render() {
