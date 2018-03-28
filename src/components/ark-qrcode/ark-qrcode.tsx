@@ -33,7 +33,7 @@ export class ArkQRCode {
 
   @Watch('vendorField')
   validateVendorField () {
-    if (typeof this.vendorField == 'string' && decodeURIComponent(this.vendorField) == this.vendorField) throw new Error('vendorField: must be a UTF-8 encoded string');
+    if (typeof this.vendorField !== 'string' || decodeURIComponent(this.vendorField) !== this.vendorField) throw new Error('vendorField: must be a UTF-8 encoded string');
     if (decodeURIComponent(this.vendorField).length > 64) throw new Error('vendorField: enter no more than 64 characters');
   }
 
