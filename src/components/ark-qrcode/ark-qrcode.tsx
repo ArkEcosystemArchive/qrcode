@@ -33,7 +33,7 @@ export class ArkQRCode {
 
   @Watch('vendorField')
   validateVendorField () {
-    if (typeof this.vendorField !== 'string' || decodeURIComponent(this.vendorField) !== this.vendorField) throw new Error('vendorField: must be a UTF-8 encoded string');
+    if (typeof this.vendorField !== 'string') throw new Error('vendorField: must be a UTF-8 encoded string');
     if (decodeURIComponent(this.vendorField).length > 64) throw new Error('vendorField: enter no more than 64 characters');
   }
 
@@ -72,7 +72,7 @@ export class ArkQRCode {
 
     const queryString = {};
     const regex = new RegExp('([^?=&]+)(=([^&]*))?', 'g');
-    validate[2].replace(regex, ($0, $1, $2, $3) => queryString[$1] = $3)
+    validate[2].replace(regex, (_, $1, __, $3) => queryString[$1] = $3)
 
     const scheme = { address: null, amount: null, label: null, vendorField: null };
 
@@ -82,8 +82,8 @@ export class ArkQRCode {
 
     scheme.address = validate[1]
     scheme.amount = scheme.amount ? Number(scheme.amount) : null
-    scheme.label = scheme.label ? decodeURI(scheme.label) : null
-    scheme.vendorField = scheme.vendorField ? decodeURI(scheme.vendorField) : null
+    scheme.label = scheme.label ? this.fullyDecodeURI(scheme.label) : null
+    scheme.vendorField = scheme.vendorField ? this.fullyDecodeURI(scheme.vendorField) : null
 
     return scheme;
   }
@@ -103,7 +103,7 @@ export class ArkQRCode {
     this.vendorField = data['vendorField'];
     this.size = data['size'];
     this.showLogo = data['showLogo'];
-    
+
     this.isLoad = true;
 
     return this.element;
@@ -158,14 +158,23 @@ export class ArkQRCode {
 
   formatParams(): string {
     let params = [];
+    const vendorField = encodeURIComponent(this.fullyDecodeURI(this.vendorField));
 
     if (this.amount) params.push(`amount=${this.amount}`);
     if (this.label) params.push(`label=${this.label}`);
-    if (this.vendorField) params.push(`vendorField=${this.vendorField}`);
+    if (this.vendorField) params.push(`vendorField=${vendorField}`);
 
     const stringify = params.length > 0 ? `?${params.join("&")}` : '';
 
     return stringify;
+  }
+
+  fullyDecodeURI(uri) {
+    const isEncoded = (str) => str !== decodeURIComponent(str);
+
+    while (isEncoded(uri)) uri = decodeURIComponent(uri);
+
+    return uri;
   }
 
   componentDidUpdate() {
@@ -180,7 +189,7 @@ export class ArkQRCode {
       this.validateVendorField();
       this.validateSize();
       this.validateShowLogo();
-  
+
       this.isLoad = true;
     }
   }

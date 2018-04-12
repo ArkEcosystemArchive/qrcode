@@ -4,38 +4,68 @@
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
 
-
-import {
-  ArkQRCode as ArkQrcode
-} from './components/ark-qrcode/ark-qrcode';
+import '@stencil/core';
 
 declare global {
-  interface HTMLArkQrcodeElement extends ArkQrcode, HTMLElement {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+
+    forceUpdate(): void;
+  }
+
+  interface HTMLAttributes {}
+}
+
+import {
+  Element,
+} from '@stencil/core';
+
+declare global {
+  interface HTMLArkQrcodeElement extends HTMLStencilElement {
+    'address': string;
+    'amount': number;
+    'deserializeURI': (uri: string) => { address: any; amount: any; label: any; vendorField: any; };
+    'fromObject': (data: any) => Element;
+    'getDataURL': (mime?: string) => string;
+    'getURI': () => string;
+    'label': string;
+    'showLogo': boolean;
+    'size': number;
+    'validateURI': (uri: string) => RegExpExecArray;
+    'vendorField': string;
   }
   var HTMLArkQrcodeElement: {
     prototype: HTMLArkQrcodeElement;
     new (): HTMLArkQrcodeElement;
   };
   interface HTMLElementTagNameMap {
-    "ark-qrcode": HTMLArkQrcodeElement;
+    'ark-qrcode': HTMLArkQrcodeElement;
   }
   interface ElementTagNameMap {
-    "ark-qrcode": HTMLArkQrcodeElement;
+    'ark-qrcode': HTMLArkQrcodeElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "ark-qrcode": JSXElements.ArkQrcodeAttributes;
+      'ark-qrcode': JSXElements.ArkQrcodeAttributes;
     }
   }
   namespace JSXElements {
     export interface ArkQrcodeAttributes extends HTMLAttributes {
-      address?: string;
-      amount?: number;
-      label?: string;
-      showLogo?: boolean;
-      size?: number;
-      vendorField?: string;
+      'address'?: string;
+      'amount'?: number;
+      'label'?: string;
+      'showLogo'?: boolean;
+      'size'?: number;
+      'vendorField'?: string;
     }
   }
 }
 
+declare global { namespace JSX { interface StencilJSX {} } }

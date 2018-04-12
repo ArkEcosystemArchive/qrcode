@@ -1,8 +1,12 @@
+const sass = require('@stencil/sass');
+
 exports.config = {
   namespace: 'arkqrcode',
-  generateDistribution: true,
   bundles: [
     { components: ['ark-qrcode'] }
+  ],
+  plugins: [
+    sass()
   ]
 };
 
