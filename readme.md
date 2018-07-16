@@ -109,6 +109,10 @@ const element = document.querySelector('ark-qrcode').fromObject(obj);
 // => <ark-qrcode address="DE6os4N86ef9bba6kVGurqxmhpBHKctoxY" amount="10.5">
 ```
 
+## Security
+
+If you discover a security vulnerability within this project, please send an e-mail to security@ark.io. All security vulnerabilities will be promptly addressed.
+
 ## Authors
 
 - Lúcio Rubens <lucio@ark.io>
