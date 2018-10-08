@@ -28,7 +28,7 @@ export class ArkQRCode {
 
   @Watch('amount')
   validateAmount () {
-    if (typeof Number(this.amount) !== 'number') throw new Error('amount: invalid amount');
+    if (typeof this.amount !== 'number' || this.amount < 0) throw new Error('amount: invalid amount');
   }
 
   @Watch('vendorField')
