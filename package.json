@@ -2,53 +2,45 @@
   "name": "ark-qrcode",
   "version": "0.0.7",
   "description": "A web component to generate QR codes for ARK payments.",
-  "main": "dist/arkqrcode.js",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "files": [
-    "dist/"
-  ],
-  "browser": "dist/arkqrcode.js",
-  "scripts": {
-    "build": "stencil build",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
-    "serve": "stencil-dev-server",
-    "start": "npm run dev",
-    "test": "jest --no-cache",
-    "test.watch": "jest --watch --no-cache"
-  },
-  "dependencies": {
-    "@stencil/core": "^0.13.1",
-    "@stencil/sass": "^0.1.0",
-    "qrious": "^4.0.2"
-  },
-  "devDependencies": {
-    "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest",
-    "@types/jest": "^21.1.1",
-    "jest": "^21.2.1"
+  "homepage": "https://github.com/luciorubeens/ark-qrcode",
+  "bugs": {
+    "url": "https://github.com/luciorubeens/ark-qrcode"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luciorubeens/ark-qrcode.git"
   },
-  "author": "Lúcio Rubens <lucio@ark.io>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/luciorubeens/ark-qrcode"
+  "author": "Lúcio Rubens <lucio@ark.io>",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "main": "dist/arkqrcode.js",
+  "browser": "dist/arkqrcode.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.e2e": "stencil test --e2e",
+    "test.e2e.watch": "stencil test --e2e --watchAll",
+    "test.unit": "stencil test --spec",
+    "test.unit.watch": "stencil test --spec --watchAll",
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
-  "homepage": "https://github.com/luciorubeens/ark-qrcode",
-  "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json",
-      "jsx"
-    ]
-  }
+  "dependencies": {
+    "@stencil/core": "^1.1.6",
+    "@stencil/sass": "^1.0.1",
+    "qrious": "^4.0.2"
+  },
+  "devDependencies": {
+    "@stencil/utils": "^0.0.5",
+    "@types/jest": "^24.0.15",
+    "@types/puppeteer": "1.12.4",
+    "jest": "^24.8.0",
+    "puppeteer": "1.17.0",
+    "workbox-build": "4.3.1"
+  },
+  "collection": "dist/collection/collection-manifest.json"
 }
