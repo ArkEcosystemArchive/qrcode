@@ -336,11 +336,6 @@
   dependencies:
     typescript "3.5.2"
 
-"@stencil/sass@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-1.0.1.tgz#9eec7b54029b14ba2f53f540687d91aeed90911a"
-  integrity sha512-3vmF8zir9FcVY/tYW0/V/pWrYSU684eASmALL2v29PGJvX6/CXh9n8LF7Jy95SpJPij3lisIUXLls7edXy2hYg==
-
 "@stencil/utils@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@stencil/utils/-/utils-0.0.5.tgz#c49577d932d6289ae082c50135ca10f496da8991"

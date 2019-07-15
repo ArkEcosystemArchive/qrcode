@@ -11,7 +11,6 @@ import QRious from "qrious";
 
 @Component({
   tag: "ark-qrcode",
-  styleUrl: "ark-qrcode.scss",
   shadow: true
 })
 export class ArkQRCode {

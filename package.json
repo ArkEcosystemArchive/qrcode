@@ -1,14 +1,14 @@
 {
-  "name": "ark-qrcode",
+  "name": "@arkecosystem/qrcode",
   "version": "0.0.7",
   "description": "A web component to generate QR codes for ARK payments.",
-  "homepage": "https://github.com/luciorubeens/ark-qrcode",
+  "homepage": "https://github.com/ArkEcosystem/qrcode",
   "bugs": {
-    "url": "https://github.com/luciorubeens/ark-qrcode"
+    "url": "https://github.com/ArkEcosystem/qrcode"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luciorubeens/ark-qrcode.git"
+    "url": "git+https://github.com/ArkEcosystem/qrcode.git"
   },
   "license": "MIT",
   "author": "Lúcio Rubens <lucio@ark.io>",
@@ -16,35 +16,36 @@
     "dist/",
     "loader/"
   ],
-  "main": "dist/arkqrcode.js",
-  "browser": "dist/arkqrcode.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/test/test.js",
+  "module": "dist/index.mjs",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "test.coverage": "stencil test --spec --e2e --coverage",
     "test.e2e": "stencil test --e2e",
-    "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.e2e.coverage": "stencil test --e2e --coverage",
+    "test.e2e.watch": "stencil test --e2e --watchAll",
     "test.unit": "stencil test --spec",
+    "test.unit.coverage": "stencil test --spec --coverage",
     "test.unit.watch": "stencil test --spec --watchAll",
-    "test.unit.coverage": "stencil test --spec --coverage"
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
     "@stencil/core": "^1.1.6",
-    "@stencil/sass": "^1.0.1",
-    "qrious": "^4.0.2"
-  },
-  "devDependencies": {
     "@stencil/utils": "^0.0.5",
     "@types/jest": "^24.0.15",
     "@types/puppeteer": "1.12.4",
     "codecov": "^3.5.0",
     "jest": "^24.8.0",
     "puppeteer": "1.17.0",
+    "qrious": "^4.0.2",
     "workbox-build": "4.3.1"
   },
-  "collection": "dist/collection/collection-manifest.json"
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs"
 }
