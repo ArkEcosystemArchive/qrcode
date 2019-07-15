@@ -23,11 +23,14 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "test.coverage": "stencil test --spec --e2e --coverage",
     "test.e2e": "stencil test --e2e",
     "test.e2e.watch": "stencil test --e2e --watchAll",
+    "test.e2e.coverage": "stencil test --e2e --coverage",
     "test.unit": "stencil test --spec",
     "test.unit.watch": "stencil test --spec --watchAll",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.unit.coverage": "stencil test --spec --coverage"
   },
   "dependencies": {
     "@stencil/core": "^1.1.6",
