@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  test-node-11:
+    working_directory: ~/qrcode
+    docker:
+      - image: circleci/node:11-browsers
+    steps: &teststeps
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Test
+          command: yarn test
+      - run:
+          name: Codecov
+          when: on_success
+          command: bash <(curl -s https://codecov.io/bash)
+  test-node-12:
+    working_directory: ~/qrcode
+    docker:
+      - image: circleci/node:12-browsers
+    steps: *teststeps
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test-node-11
+      - test-node-12
