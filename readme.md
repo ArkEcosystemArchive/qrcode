@@ -10,6 +10,8 @@
 [![Codecov](https://badgen.now.sh/codecov/c/github/ArkEcosystem/qrcode)](https://codecov.io/gh/ArkEcosystem/qrcode)
 [![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
 
+> Lead Maintainer: [Lúcio Rubens](https://github.com/luciorubeens)
+
 ## Install
 
 ### Script tag
@@ -117,12 +119,12 @@ const element = document.querySelector('ark-qrcode').fromObject(obj);
 
 ## Security
 
-If you discover a security vulnerability within this project, please send an e-mail to security@ark.io. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an e-mail to security@ark.io. All security vulnerabilities will be promptly addressed.
 
-## Authors
+## Credits
 
-- Lúcio Rubens <lucio@ark.io>
+This project exists thanks to all the people who [contribute](../../contributors).
 
 ## License
 
-ARK QRCode is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+[MIT](LICENSE) © [ARK Ecosystem](https://ark.io)
