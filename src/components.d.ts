@@ -38,7 +38,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface ArkQrcode extends JSXBase.HTMLAttributes<HTMLArkQrcodeElement> {
+  interface ArkQrcode {
     'address'?: string;
     'amount'?: number;
     'label'?: string;
@@ -57,7 +57,9 @@ export { LocalJSX as JSX };
 
 declare module "@stencil/core" {
   export namespace JSX {
-    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+    interface IntrinsicElements {
+      'ark-qrcode': LocalJSX.ArkQrcode & JSXBase.HTMLAttributes<HTMLArkQrcodeElement>;
+    }
   }
 }
 

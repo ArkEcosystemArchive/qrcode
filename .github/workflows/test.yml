@@ -1,11 +1,12 @@
 name: Test
 
 on:
-    push:
-        branches:
-            - '**'
-    pull_request:
-        types: [opened]
+  push:
+    branches:
+      - "master"
+      - "develop"
+  pull_request:
+    types: [ready_for_review, synchronize, opened]
 
 jobs:
   unit:
@@ -13,22 +14,24 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 11.x, 12.x]
+        node-version: [10.x, 12.x]
 
     steps:
       - uses: actions/checkout@v1
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install
         run: yarn install
+
       - name: Build
         run: yarn build
+
       - name: Test
         run: yarn test --coverage
+
       - name: Codecov
         run: ./node_modules/.bin/codecov --token=${{ secrets.CODECOV_TOKEN }}
-
-        env:
-          CI: true

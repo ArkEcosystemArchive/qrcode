@@ -19,7 +19,7 @@
   "main": "dist/index.js",
   "unpkg": "dist/test/test.js",
   "module": "dist/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/components.d.ts",
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
@@ -37,15 +37,18 @@
     "@stencil/core": "^1.1.6",
     "@stencil/utils": "^0.0.5",
     "@types/jest": "^24.0.15",
-    "@types/puppeteer": "1.12.4",
     "codecov": "^3.5.0",
-    "jest": "^24.8.0",
-    "puppeteer": "1.17.0",
     "qrious": "^4.0.2",
     "workbox-build": "4.3.1"
   },
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs"
+  "es2017": "dist/esm/index.mjs",
+  "devDependencies": {
+    "@types/puppeteer": "1.20.1",
+    "jest": "24.8.0",
+    "jest-cli": "24.8.0",
+    "puppeteer": "1.20.0"
+  }
 }
