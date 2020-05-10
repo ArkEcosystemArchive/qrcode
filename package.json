@@ -36,7 +36,7 @@
   "dependencies": {
     "@stencil/core": "^1.1.6",
     "@stencil/utils": "^0.0.5",
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^25.0.0",
     "codecov": "^3.5.0",
     "qrious": "^4.0.2",
     "workbox-build": "5.1.3"
