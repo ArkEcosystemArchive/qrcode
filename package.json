@@ -49,6 +49,6 @@
     "@types/puppeteer": "1.20.5",
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
-    "puppeteer": "2.0.0"
+    "puppeteer": "3.0.4"
   }
 }
