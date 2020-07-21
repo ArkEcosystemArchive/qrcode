@@ -37,7 +37,7 @@
     "@stencil/core": "^1.1.6",
     "@stencil/utils": "^0.0.5",
     "@types/jest": "^26.0.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.7.1",
     "qrious": "^4.0.2",
     "workbox-build": "5.1.3"
   },
