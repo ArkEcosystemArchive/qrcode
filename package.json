@@ -47,8 +47,8 @@
   "es2017": "dist/esm/index.mjs",
   "devDependencies": {
     "@types/puppeteer": "3.0.1",
-    "jest": "26.1.0",
-    "jest-cli": "26.1.0",
+    "jest": "26.4.0",
+    "jest-cli": "26.4.0",
     "puppeteer": "5.2.0"
   }
 }
