@@ -34,7 +34,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@stencil/core": "^1.1.6",
+    "@stencil/core": "^2.0.0",
     "@stencil/utils": "^0.0.5",
     "@types/jest": "^26.0.0",
     "codecov": "^3.5.0",
